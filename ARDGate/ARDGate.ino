@@ -15,12 +15,12 @@
 
 dht11 DHT;
 
-int h_value = 0;         // показания датчика влажности
-int t_value = 0;         // показания датчика температуры
+int h_value = 0;         // hum value
+int t_value = 0;         // temp value
 
 byte mac[]    = { 0x01, 0x23, 0x45, 0x67, 0x89, 0x02 };
-byte server[] = { 192, 168, 1, 241 };
-byte ip[]     = { 192, 168, 1, 230 };
+byte server[] = { 192, 168, 1, 241 }; // your MajorDomo Server ip
+byte ip[]     = { 192, 168, 1, 230 }; // your gateway ip
 
 char buff_msg[32];            // mqtt message
 
@@ -134,7 +134,7 @@ void loop() {
   if (lastMqtt > millis()) lastMqtt = 0;
   client.loop();
 
-  // здесь какой-то другой код по уравлению светом, например, с кнопок или ещё как 
+  // any over code 
   
   if (millis() > (lastMqtt + 10000)) {
     if (!client.connected()) {
